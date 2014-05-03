@@ -1,4 +1,4 @@
-wordpress-ajax-login
+WordPress Ajax Login
 ====================
 
 A simple solution for WordPress logins
