@@ -1,0 +1,224 @@
+/*
+ * WordPress Ajax Login
+ * https://github.com/dcooney/wordpress-ajax-login
+ *
+ * Copyright 2014 Connekt Media - http://cnkt.ca/wordpress-ajax-login/
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Author: Darren Cooney
+ * Twitter: @KaptonKaos
+*/
+
+
+.wp-ajax-login-container{
+	margin: 0 0 60px;
+	padding: 3% 5%; 
+	display: block;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	border-bottom: 6px solid #ccc;
+	background: #fff;
+	box-shadow: 0 0 4px #ccc, inset 0 -60px 60px rgba(0, 0, 0, 0.05);
+	border-radius: 3px 3px;	
+}
+	.wp-ajax-login-container h3{
+		margin: 0 0 5px;
+		padding: 0;
+	}
+		.wp-ajax-login-container h3 + p{
+			font-size: 14px;
+			opacity: 0.6;
+			border-bottom: 1px solid #efefef;
+			margin: 0 0 5px;
+			padding:0 0 15px;
+		}
+	p.lost-password{
+		font-size: 14px;
+		border-top: 1px solid #efefef;
+		margin: 5px 0 0;
+		padding:15px 0 0;		
+	}
+
+/* Form Styles */
+#wp-ajax-login{}
+
+	#wp-ajax-login .item{
+		display: block;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		margin: 10px 0;
+		padding: 5px;
+	}
+	#wp-ajax-login label{}
+	#wp-ajax-login input[type=text],
+	#wp-ajax-login input[type=password]{
+		padding: 0 10px 0 50px;
+		background: #fff;
+		border: none;
+		border-radius: 3px;	
+		margin: 0;
+		display: block;
+		clear: both;
+		overflow: hidden;
+		float: none;
+		font-size: 16px;
+		height: 44px;
+		line-height: 44px;
+		border: 1px solid #ccc;
+	}
+	#wp-ajax-login input[type=text]:focus,
+	#wp-ajax-login input[type=password]:focus{
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+	}
+	input:-webkit-autofill {
+	   background-color: white !important;
+		-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+	}
+	
+	#wp-ajax-login i{
+		color: #fff;
+		font-size: 20px; 
+		text-align: center;
+		padding: 0;
+		position: absolute;
+		top:5px;
+		left: 5px;
+		width: 42px;		
+		border-radius: 3px 0 0 3px;
+		box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.1);
+		background: #ED7070;
+		height: 44px;
+		line-height: 44px;
+		z-index: 1;
+	}
+	
+	.toggle-password{
+		font-size: 11px;
+		position: absolute;
+		top:14px;
+		right: 14px;
+		display: inline-block;
+		z-index: 1;
+	}
+		.toggle-password a{
+			color: #9f8abf;
+			padding: 4px 7px 4px 20px;
+			border-radius: 2px;
+			background: #e4d7f6;
+			border: 1px solid #c5b1e1;
+			display: inline-block;
+			position: relative;
+		}
+		.toggle-password a:before{
+			position: absolute; 
+			font-family: "FontAwesome";
+			content: '\f10c';
+			position: absolute;
+			left: 4px;
+			z-index: 1;
+			font-size: 13px;
+		}
+			.toggle-password a:hover{
+				color: #776394;
+			}
+			.toggle-password a:active,
+			.toggle-password a.active{
+				color: #fff;
+				background: #776394;
+				border-color: #776394;
+			}
+			.toggle-password a.active:before{
+				content: '\f058';
+			}
+	
+	#wp-ajax-login .offscreen{
+		position: absolute !important;
+		top: -9999px !important;
+		left: -9999px !important;
+	}
+	
+	
+	#wp-ajax-login .checkbox-wrap{
+		padding: 5px 10px 5px 5px;
+		float: left;
+		width: auto;
+		margin: 7px 0 0 15px;
+		border-radius: 3px;
+	}
+	#wp-ajax-login .checkbox-wrap input,
+	#wp-ajax-login .checkbox-wrap label{
+		float: left;
+		width: auto;
+	}
+		#wp-ajax-login .checkbox-wrap input{
+			margin: 1px 6px 0 0;
+		}
+	
+	
+	#wp-ajax-login button{
+		background: #45b4fb;		
+		border: 1px solid #3a86be;
+		border-radius: 3px;
+		height: auto;
+		padding: 11px 40px;
+		box-shadow: none;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 600;
+		box-shadow: inset 0 -20px 6px rgba(0, 0, 0, 0.1), inset 0 -1px 1px rgba(255, 255, 255, 0.2);
+		float: left;
+		margin: 0;
+	}
+		#wp-ajax-login button:hover{
+			background: #3ea6e9;
+		}
+		#wp-ajax-login button:active{
+			background: #469edf;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+		}
+		#wp-ajax-login button.disabled{
+			opacity: 0.5 !important;
+			background: #469edf !important;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+			cursor: default;
+		}
+	
+	
+
+#wp-ajax-login .status{
+   margin: 0;
+   padding: 0 5px;
+   width: 100%;
+   overflow: hidden;
+}
+   #wp-ajax-login .status p{
+      display: none;
+      font-size: 14px;
+      color:#999;
+      margin: 0;
+      padding: 0;
+      float: left;
+   }
+   #wp-ajax-login .status .loading{
+      background: url(../img/ajax-loader.gif) no-repeat center center;
+      line-height: 20px;
+      width: 20px;
+      height: 20px;
+      margin: 0 10px 0 0;
+      display: inline-block;
+      position: relative;
+      float: left;
+      display: none;
+   }
+   #wp-ajax-login .status .error{
+      color: #ED7070;
+   }
+   #wp-ajax-login .status .success{
+      color: #84ba53;
+   }
+   
+
+
+
